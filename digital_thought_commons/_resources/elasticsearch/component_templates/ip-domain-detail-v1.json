@@ -1,0 +1,242 @@
+{
+  "template": {
+    "mappings": {
+      "_source": {
+        "enabled": true
+      },
+      "dynamic_templates": [
+        {
+          "domain": {
+            "path_match": "*_details.domain",
+            "mapping": {
+              "type": "keyword"
+            }
+          }
+        },
+        {
+          "ip_address": {
+            "path_match": "*_details.ip_address",
+            "mapping": {
+              "type": "ip"
+            }
+          }
+        },
+        {
+          "lookup_timestamp": {
+            "path_match": "*_details.lookup_timestamp",
+            "mapping": {
+              "type": "date"
+            }
+          }
+        },
+        {
+          "location": {
+            "path_match": "*_details.location",
+            "mapping": {
+              "type": "geo_point"
+            }
+          }
+        },
+        {
+          "abuse_ip_address": {
+            "path_match": "*_details.abuse_activity.ip_address",
+            "mapping": {
+              "type": "ip"
+            }
+          }
+        },
+        {
+          "abuse_total_reports": {
+            "path_match": "*_details.abuse_activity.abuse_total_reports",
+            "mapping": {
+              "type": "long"
+            }
+          }
+        },
+        {
+          "original_encoded_response": {
+            "path_match": "*_details.abuse_activity.original_encoded_response",
+            "mapping": {
+              "type": "text"
+            }
+          }
+        },
+        {
+          "abuse_activity_keywords": {
+            "path_match": "*_details.abuse_activity.*",
+            "mapping": {
+              "type": "keyword"
+            }
+          }
+        },
+        {
+          "security_booleans": {
+            "path_match": "*_details.security.is_*",
+            "mapping": {
+              "type": "boolean"
+            }
+          }
+        },
+        {
+          "security_booleans": {
+            "path_match": "*_details.security.*",
+            "mapping": {
+              "type": "keyword"
+            }
+          }
+        },
+        {
+          "connection": {
+            "path_match": "*_details.connection.*",
+            "mapping": {
+              "type": "keyword"
+            }
+          }
+        },
+        {
+          "location_info": {
+            "path_match": "*_details.location_info.*",
+            "mapping": {
+              "type": "keyword"
+            }
+          }
+        },
+        {
+          "reverse_ip": {
+            "path_match": "*_details.reverse_ip",
+            "mapping": {
+              "type": "nested",
+              "properties": {
+                "name": {
+                  "type": "keyword"
+                },
+                "last_resolved": {
+                  "type": "date"
+                }
+              }
+            }
+          }
+        },
+        {
+          "whois_registrant": {
+            "path_match": "*_details.whois.registrant",
+            "mapping": {
+              "type": "keyword"
+            }
+          }
+        },
+        {
+          "whois_organisation": {
+            "path_match": "*_details.whois.organisation",
+            "mapping": {
+              "type": "keyword"
+            }
+          }
+        },
+        {
+          "whois_name_servers": {
+            "path_match": "*_details.whois.name_servers",
+            "mapping": {
+              "type": "keyword"
+            }
+          }
+        },
+        {
+          "whois_raw_data": {
+            "path_match": "*_details.whois.rawdata",
+            "mapping": {
+              "type": "text"
+            }
+          }
+        },
+        {
+          "whois_created": {
+            "path_match": "*_details.whois.created",
+            "mapping": {
+              "type": "date"
+            }
+          }
+        },
+        {
+          "whois_updated": {
+            "path_match": "*_details.whois.updated",
+            "mapping": {
+              "type": "date"
+            }
+          }
+        },
+        {
+          "whois_expires": {
+            "path_match": "*_details.whois.expires",
+            "mapping": {
+              "type": "date"
+            }
+          }
+        },
+        {
+          "registration_creation": {
+            "path_match": "*_details.whois.registration.creation",
+            "mapping": {
+              "type": "date"
+            }
+          }
+        },
+        {
+          "registration_created": {
+            "path_match": "*_details.whois.registration.created",
+            "mapping": {
+              "type": "date"
+            }
+          }
+        },
+        {
+          "registration_expires": {
+            "path_match": "*_details.whois.registration.expires",
+            "mapping": {
+              "type": "date"
+            }
+          }
+        },
+        {
+          "registration_updated": {
+            "path_match": "*_details.whois.registration.updated",
+            "mapping": {
+              "type": "date"
+            }
+          }
+        },
+        {
+          "registration_registrar": {
+            "path_match": "*_details.whois.registration.registrar",
+            "mapping": {
+              "type": "keyword"
+            }
+          }
+        },
+        {
+          "registration_statuses": {
+            "path_match": "*_details.whois.registration.statuses",
+            "mapping": {
+              "type": "keyword"
+            }
+          }
+        },
+        {
+          "whois_keywords": {
+            "path_match": "*_details.whois.*",
+            "path_unmatch": "*_details.whois.registration",
+            "mapping": {
+              "type": "keyword"
+            }
+          }
+        }
+      ]
+    }
+  },
+  "_meta": {
+    "description": "IP/Domain Details Component",
+    "version": "v1",
+    "short_name": "ip-domain-detail-v1",
+    "requires_prefix": false
+  }
+}

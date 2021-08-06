@@ -1,0 +1,31 @@
+{
+  "index_patterns": [
+    "malicious-urls-v1-*"
+  ],
+  "template": {
+    "settings": {
+      "number_of_shards": 1,
+      "number_of_replicas": 1,
+      "index.lifecycle.name": "malicious-urls",
+      "index.lifecycle.rollover_alias": "malicious-urls"
+    },
+    "mappings": {
+      "properties": {
+        "url": {
+          "type": "text"
+        },
+        "status": {
+          "type": "keyword"
+        }
+      }
+    }
+  },
+  "priority": 200,
+  "version": 1,
+  "_meta": {
+    "description": "Malicious Urls Index",
+    "version": "v1",
+    "short_name": "malicious-urls-v1",
+    "requires_prefix": false
+  }
+}

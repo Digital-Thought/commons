@@ -1,0 +1,97 @@
+{
+  "template": {
+    "mappings": {
+      "_source": {
+        "enabled": true
+      },
+      "dynamic_templates": [
+        {
+          "text": {
+            "path_match": "message.text",
+            "mapping": {
+              "type": "text"
+            }
+          }
+        },
+        {
+          "message": {
+            "path_match": "message.message",
+            "mapping": {
+              "type": "keyword"
+            }
+          }
+        },
+        {
+          "subject": {
+            "path_match": "message.subject.*",
+            "mapping": {
+              "type": "keyword"
+            }
+          }
+        },
+        {
+          "account__for__which__logon__failed": {
+            "path_match": "message.account_for_which_logon_failed.*",
+            "mapping": {
+              "type": "keyword"
+            }
+          }
+        },
+        {
+          "failure__information": {
+            "path_match": "message.failure_information.*",
+            "mapping": {
+              "type": "keyword"
+            }
+          }
+        },
+        {
+          "process__information": {
+            "path_match": "message.process_information.*",
+            "mapping": {
+              "type": "keyword"
+            }
+          }
+        },
+        {
+          "network__information": {
+            "path_match": "message.network_information.*",
+            "mapping": {
+              "type": "keyword"
+            }
+          }
+        },
+        {
+          "detailed__authentication__information": {
+            "path_match": "message.detailed_authentication_information.*",
+            "mapping": {
+              "type": "keyword"
+            }
+          }
+        },
+        {
+          "source__network__address": {
+            "path_match": "message.source_network_address",
+            "mapping": {
+              "type": "keyword"
+            }
+          }
+        },
+        {
+          "new__logon": {
+            "path_match": "message.new_logon.*",
+            "mapping": {
+              "type": "keyword"
+            }
+          }
+        }
+      ]
+    }
+  },
+  "_meta": {
+    "description": "Event Message Component",
+    "version": "v1",
+    "short_name": "event-message-v1",
+    "requires_prefix": false
+  }
+}

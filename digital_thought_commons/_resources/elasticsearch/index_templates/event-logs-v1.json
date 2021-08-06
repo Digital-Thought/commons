@@ -1,0 +1,145 @@
+{
+  "index_patterns": [
+    "<prefix>-event-logs-v1-*"
+  ],
+  "template": {
+    "settings": {
+      "number_of_shards": 2,
+      "number_of_replicas": 2,
+      "index.lifecycle.name": "logs",
+      "index.lifecycle.rollover_alias": "<prefix>-event-logs",
+      "analysis": {
+        "normalizer": {
+          "case_insensitive": {
+            "type": "custom",
+            "filter": [
+              "lowercase"
+            ]
+          }
+        }
+      }
+    },
+    "mappings": {
+      "dynamic_templates": [
+        {
+          "string": {
+            "path_match": "extras.*",
+            "mapping": {
+              "type": "text"
+            }
+          }
+        }
+      ],
+      "properties": {
+        "event_timestamp": {
+          "type": "date"
+        },
+        "event_type": {
+          "type": "keyword",
+          "normalizer": "case_insensitive"
+        },
+        "event_message": {
+          "type": "keyword",
+          "normalizer": "case_insensitive"
+        },
+        "event_source": {
+          "type": "keyword",
+          "normalizer": "case_insensitive"
+        },
+        "user": {
+          "properties": {
+            "last_name": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "first_name": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "user_email": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "enabled": {
+              "type": "boolean"
+            },
+            "last_used": {
+              "type": "date"
+            },
+            "activity_date": {
+              "type": "date"
+            }
+          }
+        },
+        "details": {
+          "properties": {
+            "filename": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "function_name": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "level_number": {
+              "type": "long"
+            },
+            "line_number": {
+              "type": "long"
+            },
+            "module": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "msecs": {
+              "type": "double"
+            },
+            "path_name": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "process": {
+              "type": "long"
+            },
+            "process_name": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "relative_created": {
+              "type": "double"
+            },
+            "stack_info": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "thread": {
+              "type": "long"
+            },
+            "thread_name": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "exception": {
+              "properties": {
+                "exception_info": {
+                  "type": "text"
+                },
+                "exception_text": {
+                  "type": "text"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "priority": 200,
+  "version": 1,
+  "_meta": {
+    "description": "Event Log index",
+    "version": "v1",
+    "short_name": "event-logs-v1",
+    "requires_prefix": true
+  }
+}

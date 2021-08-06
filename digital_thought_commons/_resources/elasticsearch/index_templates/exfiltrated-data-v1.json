@@ -1,0 +1,101 @@
+{
+  "index_patterns": [
+    "<prefix>-exfiltrated-data-v1-*"
+  ],
+  "template": {
+    "settings": {
+      "number_of_shards": 1,
+      "number_of_replicas": 1,
+      "index.lifecycle.name": "logs",
+      "index.lifecycle.rollover_alias": "<prefix>-exfiltrated-data",
+      "analysis": {
+        "normalizer": {
+          "case_insensitive": {
+            "type": "custom",
+            "filter": [
+              "lowercase"
+            ]
+          }
+        }
+      }
+    },
+    "mappings": {
+      "properties": {
+        "source_archive": {
+          "properties": {
+            "archive_name": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "archive_full_path": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "archive_description": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "modified_time": {
+              "type": "date"
+            },
+            "creation_time": {
+              "type": "date"
+            },
+            "last_accessed_time": {
+              "type": "date"
+            },
+            "size": {
+              "type": "long"
+            },
+            "server": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "7zip_command_line": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "7zip_source_path": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            }
+          }
+        },
+        "entry_time": {
+          "type": "date"
+        },
+        "name": {
+          "type": "keyword",
+          "normalizer": "case_insensitive"
+        },
+        "full_path": {
+          "type": "keyword",
+          "normalizer": "case_insensitive"
+        },
+        "is_directory": {
+          "type": "boolean"
+        },
+        "is_file": {
+          "type": "boolean"
+        },
+        "size": {
+          "type": "long"
+        },
+        "compressed_size": {
+          "type": "long"
+        }
+      }
+    }
+  },
+  "composed_of": [
+    "custom-metadata-v2"
+  ],
+  "priority": 200,
+  "version": 2,
+  "_meta": {
+    "description": "Exfiltrated Data Analysis Index",
+    "version": "v1",
+    "short_name": "exfiltrated-data-v1",
+    "requires_prefix": true
+  }
+}

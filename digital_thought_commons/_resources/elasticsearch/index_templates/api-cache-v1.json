@@ -1,0 +1,40 @@
+{
+  "index_patterns": [
+    "api-cache-v1-*"
+  ],
+  "template": {
+    "settings": {
+      "number_of_shards": 1,
+      "number_of_replicas": 1,
+      "index.lifecycle.name": "api-cache",
+      "index.lifecycle.rollover_alias": "api-cache"
+    },
+    "mappings": {
+      "properties": {
+        "signature_hash": {
+          "type": "text"
+        },
+        "encoded_response": {
+          "type": "text"
+        },
+        "cache_name": {
+          "type": "keyword"
+        },
+        "username": {
+          "type": "keyword"
+        },
+        "lookup_timestamp": {
+          "type": "date"
+        }
+      }
+    }
+  },
+  "priority": 200,
+  "version": 1,
+  "_meta": {
+    "description": "API Cache Index",
+    "version": "v1",
+    "short_name": "api-cache-v1",
+    "requires_prefix": false
+  }
+}

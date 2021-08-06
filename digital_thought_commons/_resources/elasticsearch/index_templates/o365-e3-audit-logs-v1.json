@@ -1,0 +1,2534 @@
+{
+  "index_patterns": [
+    "<prefix>-o365-e3-audit-logs-v1-*"
+  ],
+  "template": {
+    "settings": {
+      "number_of_shards": 1,
+      "number_of_replicas": 1,
+      "index.lifecycle.name": "logs",
+      "index.lifecycle.rollover_alias": "<prefix>-o365-e3-audit-logs",
+      "analysis": {
+        "normalizer": {
+          "case_insensitive": {
+            "type": "custom",
+            "filter": [
+              "lowercase"
+            ]
+          }
+        }
+      }
+    },
+    "mappings": {
+      "properties": {
+        "Actor": {
+          "properties": {
+            "type_0": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "type_1": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "type_2": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "type_3": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "type_5": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            }
+          }
+        },
+        "AdditionalData": {
+          "type": "object"
+        },
+        "AffectedItems": {
+          "properties": {
+            "Attachments": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "Id": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "InternetMessageId": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "ParentFolder": {
+              "properties": {
+                "Id": {
+                  "type": "keyword",
+                  "normalizer": "case_insensitive"
+                },
+                "Path": {
+                  "type": "keyword",
+                  "normalizer": "case_insensitive"
+                }
+              }
+            },
+            "Subject": {
+              "type": "text"
+            }
+          }
+        },
+        "AlertLinks": {
+          "properties": {
+            "AlertLinkHref": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            }
+          }
+        },
+        "ClassificationInfo": {
+          "properties": {
+            "Confidence": {
+              "type": "long"
+            },
+            "Count": {
+              "type": "long"
+            },
+            "SensitiveType": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "SensitiveTypeName": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            }
+          }
+        },
+        "CreationDate": {
+          "type": "date",
+          "format": "d/M/yyyy h:m:s a"
+        },
+        "Datasets": {
+          "properties": {
+            "DatasetId": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "DatasetName": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            }
+          }
+        },
+        "DestFolder": {
+          "properties": {
+            "Id": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "Path": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            }
+          }
+        },
+        "Details": {
+          "properties": {
+            "Activity": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "ActivityId": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "ActorContextId": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "ActorIpAddress": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "AddOnGuid": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "AddOnType": {
+              "type": "long"
+            },
+            "AlertEntityId": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "AlertId": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "AlertType": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "AppId": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "ApplicationDisplayName": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "ApplicationId": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "ArtifactId": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "ArtifactName": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "AzureActiveDirectoryEventType": {
+              "type": "long"
+            },
+            "BrowserName": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "Case": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "Category": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "ChannelGuid": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "ChannelName": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "ChannelType": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "ClientAppId": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "ClientApplication": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "ClientIP": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "ClientIPAddress": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "ClientInfoString": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "ClientProcessName": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "ClientVersion": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "CmdletVersion": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "Comments": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "ConsumptionMethod": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "CorrelationId": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "CreationTime": {
+              "type": "date"
+            },
+            "CrmOrganizationUniqueName": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "CrossMailboxOperation": {
+              "type": "boolean"
+            },
+            "CustomUniqueId": {
+              "type": "boolean"
+            },
+            "Data": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "DataConnectivityMode": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "DataType": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "DatasetId": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "DatasetName": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "Description": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "DestinationFileExtension": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "DestinationFileName": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "DestinationRelativeUrl": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "DistributionMethod": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "DoNotDistributeEvent": {
+              "type": "boolean"
+            },
+            "EffectiveOrganization": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "EntityId": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "EntityName": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "EntityType": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "EventData": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "EventSource": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "ExchangeLocations": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "ExternalAccess": {
+              "type": "boolean"
+            },
+            "FileSyncBytesCommitted": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "Id": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "ImplicitShare": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "ImportDisplayName": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "ImportId": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "ImportSource": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "ImportType": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "InsightId": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "InstanceUrl": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "InterSystemsId": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "InternalLogonType": {
+              "type": "long"
+            },
+            "IntraSystemId": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "IsSuccess": {
+              "type": "boolean"
+            },
+            "ItemName": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "ItemType": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "ItemUrl": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "ListBaseTemplateType": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "ListBaseType": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "ListId": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "ListItemUniqueId": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "ListTitle": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "LogonError": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "LogonType": {
+              "type": "long"
+            },
+            "LogonUserSid": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "MachineDomainInfo": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "MachineId": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "MailboxGuid": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "MailboxOwnerMasterAccountSid": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "MailboxOwnerSid": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "MailboxOwnerUPN": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "Message": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "Name": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "NewValue": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "NonPIIParameters": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "ObjectId": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "ObjectName": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "ObjectType": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "OldValue": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "Operation": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "OrganizationName": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "OriginatingServer": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "Parameters": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "PolicyId": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "PrimaryFieldValue": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "PublicFolderLocations": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "Purpose": {
+              "type": "long"
+            },
+            "Query": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "QueryResults": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "RecordType": {
+              "type": "long"
+            },
+            "ReportId": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "ReportName": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "ReportType": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "RequestId": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "ResultStatus": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "SecurityComplianceCenterEventType": {
+              "type": "long"
+            },
+            "SendAsUserMailboxGuid": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "SendAsUserSmtp": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "SendOnBehalfOfUserMailboxGuid": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "SendOnBehalfOfUserSmtp": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "ServiceContextId": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "ServiceContextIdType": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "ServiceName": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "SessionId": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "Severity": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "SharepointLocations": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "SharingType": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "Site": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "SiteUrl": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "SkypeForBusinessEventType": {
+              "type": "long"
+            },
+            "Source": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "SourceFileExtension": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "SourceFileName": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "SourceRelativeUrl": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "StartTime": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "Status": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "SupportTicketId": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "SystemUserId": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "TabType": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "TargetContextId": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "TargetUserOrGroupName": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "TargetUserOrGroupType": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "TeamGuid": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "TeamName": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "TenantName": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "UniqueSharingId": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "UserAgent": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "UserId": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "UserKey": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "UserServicePlan": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "UserType": {
+              "type": "long"
+            },
+            "UserUpn": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "Version": {
+              "type": "long"
+            },
+            "WebId": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "WorkSpaceName": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "Workload": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "WorkspaceId": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            }
+          }
+        },
+        "ExtendedProperties": {
+          "properties": {
+            "!actorContextId": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "!operationName": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "ActionId": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "CaseId": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "CaseMembersGuid": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "CaseMembersSmtp": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "FingerprintData": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "FirstTriagedBy": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "FlowTokenScenario": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "ItemId": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "KeepMeSignedIn": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "KesMailId": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "LastUpdatedBy": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "RequestType": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "RescanVerdict": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "ResultStatusDetail": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "SearchIds": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "SubmissionCategory": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "SubmissionId": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "TriageCategory": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "TriageVerdict": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "TriagedDate": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "UserAgent": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "UserAuthenticationMethod": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "actorAppID": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "actorContextId": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "actorObjectClass": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "actorObjectId": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "actorPUID": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "actorUPN": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "additionalDetails": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "additionalTargets": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "auditEventCategory": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "correlationId": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "env_appId": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "env_appVer": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "env_cloud_deploymentUnit": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "env_cloud_environment": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "env_cloud_name": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "env_cloud_role": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "env_cloud_roleInstance": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "env_cloud_roleVer": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "env_cloud_ver": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "env_cv": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "env_epoch": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "env_flags": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "env_iKey": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "env_name": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "env_os": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "env_osVer": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "env_popSample": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "env_seqNum": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "env_time": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "env_ver": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "extendedAuditEventCategory": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "nCloud": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "resultDescription": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "resultType": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "targetContextId": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "targetIncludedUpdatedProperties": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "targetName": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "targetObjectId": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "targetPUID": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "targetSPN": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "targetUPN": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "teamName": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "version": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            }
+          }
+        },
+        "ExtraProperties": {
+          "properties": {
+            "parameter": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            }
+          }
+        },
+        "Folder": {
+          "properties": {
+            "Id": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "Path": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            }
+          }
+        },
+        "Folders": {
+          "properties": {
+            "Id": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "Path": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            }
+          }
+        },
+        "Identity": {
+          "type": "keyword",
+          "normalizer": "case_insensitive"
+        },
+        "InsightData": {
+          "properties": {
+            "Details": {
+              "type": "text"
+            },
+            "ExtendedData": {
+              "type": "text"
+            },
+            "Recommendations": {
+              "properties": {
+                "Name": {
+                  "type": "keyword",
+                  "normalizer": "case_insensitive"
+                },
+                "Value": {
+                  "type": "text"
+                }
+              }
+            },
+            "Type": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            }
+          }
+        },
+        "IsValid": {
+          "type": "boolean"
+        },
+        "Item": {
+          "properties": {
+            "Attachments": {
+              "type": "text"
+            },
+            "Id": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "IsRecord": {
+              "type": "boolean"
+            },
+            "ModifiedProperties": {
+              "type": "nested"
+            },
+            "ParentFolder": {
+              "properties": {
+                "Id": {
+                  "type": "keyword",
+                  "normalizer": "case_insensitive"
+                },
+                "Path": {
+                  "type": "keyword",
+                  "normalizer": "case_insensitive"
+                }
+              }
+            },
+            "Subject": {
+              "type": "text"
+            }
+          }
+        },
+        "Members": {
+          "properties": {
+            "DisplayName": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "Role": {
+              "type": "long"
+            },
+            "UPN": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            }
+          }
+        },
+        "ObjectState": {
+          "type": "keyword",
+          "normalizer": "case_insensitive"
+        },
+        "OperationProperties": {
+          "properties": {
+            "Name": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "Value": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            }
+          }
+        },
+        "Operations": {
+          "type": "keyword",
+          "normalizer": "case_insensitive"
+        },
+        "PSComputerName": {
+          "type": "keyword",
+          "normalizer": "case_insensitive"
+        },
+        "PSShowComputerName": {
+          "type": "boolean"
+        },
+        "Parameters": {
+          "properties": {
+            "AcceptLargeDataLoss": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "AcceptMessagesOnlyFromSendersOrMembers": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "AccessRights": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "Action": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "ActiveSyncAllowedDeviceIDs": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "ActiveSyncDebugLogging": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "ActiveSyncSuppressReadReceipt": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "AdminAuditLogEnabled": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "Alias": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "AllowAnonymousUsersToStartMeeting": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "AllowBox": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "AllowBroadcastScheduling": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "AllowBroadcastTranscription": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "AllowCallForwardingToPhone": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "AllowCallForwardingToUser": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "AllowCallGroups": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "AllowChannelMeetingScheduling": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "AllowCloudRecording": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "AllowDelegation": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "AllowDropBox": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "AllowEmailIntoChannel": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "AllowExternalParticipantGiveRequestControl": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "AllowGiphy": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "AllowGoogleDrive": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "AllowIPVideo": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "AllowImmersiveReader": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "AllowLegacyDNMismatch": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "AllowMeetNow": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "AllowMemes": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "AllowOrganizationTab": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "AllowOutlookAddIn": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "AllowOwnerDeleteMessage": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "AllowPSTNUsersToBypassLobby": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "AllowParticipantGiveRequestControl": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "AllowPowerPointSharing": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "AllowPriorityMessages": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "AllowPrivateCalling": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "AllowPrivateMeetNow": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "AllowPrivateMeetingScheduling": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "AllowRemoveUser": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "AllowResourceAccountSendMessage": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "AllowScopedPeopleSearchandAccess": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "AllowShareFile": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "AllowSharedNotes": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "AllowSideLoading": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "AllowStickers": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "AllowTranscription": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "AllowUnknownColumnsInCsv": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "AllowUrlPreviews": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "AllowUserChat": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "AllowUserDeleteMessage": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "AllowUserEditMessage": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "AllowUserPinning": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "AllowUserTranslation": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "AllowVoicemail": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "AllowWebPSTNCalling": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "AllowWhiteboard": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "AlwaysDeleteOutlookRulesBlob": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "AppPresetList": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "ApplyCategory": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "ApplyHtmlDisclaimerFallbackAction": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "ApplyHtmlDisclaimerLocation": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "ApplyHtmlDisclaimerText": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "ApplyMandatoryProperties": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "Arbitration": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "AudioMessageEnabledType": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "AutoAdmittedUsers": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "AutoComplete": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "AutoMapping": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "AutoStart": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "AutoSubscribeNewMembers": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "BadItemLimit": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "BatchName": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "BlockedFileTypes": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "BodyContainsWords": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "BroadcastAttendeeVisibilityMode": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "BroadcastRecordingMode": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "BusinessType": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "BusyOnBusyEnabledType": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "BypassLiveId": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "BypassSecurityGroupManagerCheck": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "CSVData": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "Cancel": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "ChannelsInChatListEnabledType": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "ClientExtensions": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "Cmdlet": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "CmdletOptions": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "Comments": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "CompleteAfter": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "Confirm": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "ContentPin": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "CopyOwnerToMember": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "CopyToFolder": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "CsvStream": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "Culture": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "Database": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "Date": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "DefaultCatalogApps": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "DefaultCatalogAppsType": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "DefaultStateForUser": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "DeleteContent": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "DeleteMessage": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "DeliverToMailboxAndForward": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "Description": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "DesiredWorkloads": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "DesiredWorkloadsGracePeriod": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "Disconnect": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "DisplayName": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "DoNotUpdateRecipients": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "DomainController": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "DownloadTeams": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "EmailAddresses": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "EnableQoS": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "Enabled": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "EndDate": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "ErrorAction": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "ExceptIfBodyContainsWords": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "ExceptIfSubjectContainsWords": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "ExceptIfSubjectOrBodyContainsWords": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "ExecutingIdentity": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "ExecutingUser": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "ExpandSubnets": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "ExposeSDNConfigurationJsonBlob": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "Extensions": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "ExternalAccess": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "ExternalEmailAddress": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "FileData": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "Filter": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "FirstName": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "FixExchangeObjectId": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "Force": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "ForwardTo": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "ForwardingAddress": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "ForwardingSmtpAddress": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "From": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "GMGen": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "GiphyRatingType": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "GlobalCatalogApps": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "GlobalCatalogAppsType": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "GrantSendOnBehalfTo": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "HasAttachment": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "HeaderContainsMessageHeader": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "HeaderContainsWords": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "HiddenFromAddressListsEnabled": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "HiddenGroupMembershipEnabled": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "HygieneSuite": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "Identity": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "IgnoreDehydratedFlag": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "IgnoreLegalHold": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "IgnoreNamingPolicy": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "IncludeSoftDeletedMailbox": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "IncludeSoftDeletedObjects": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "InheritanceType": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "Initials": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "InstantMessagingType": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "InventoryType": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "IssueWarningQuota": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "ItemId": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "KeepWindowsLiveID": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "Language": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "LargeItemLimit": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "LastName": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "LinkType": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "Links": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "LitigationHoldEnabled": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "LiveCaptionsEnabledType": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "LogLevel": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "LogOnly": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "LogonTypes": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "MailRouting": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "MailTip": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "MailboxLocationType": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "MailboxRegion": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "Mailboxes": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "ManagedBy": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "Management": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "MarkAsRead": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "MaxSendSize": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "MediaBitRateKb": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "MeetingChatEnabledType": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "Member": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "MemberDepartRestriction": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "MemberJoinRestriction": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "Members": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "MessageCopyForSendOnBehalfEnabled": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "MessageCopyForSentAsEnabled": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "MessageTracking": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "Migration": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "Mode": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "MoveToFolder": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "MusicOnHoldEnabledType": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "MyNameInToBox": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "Name": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "Notes": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "NotificationEmails": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "OABGen": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "OMEncryption": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "OMEncryptionStore": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "Office": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "OfficeGraph": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "OrgPartition": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "OrgPartitionDescription": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "OrgPartitionOwner": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "Organization": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "OrganizationApp": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "OrganizationFederatedMailbox": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "Outbound": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "Owner": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "Password": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "Permanent": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "PinExpired": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "PinnedAppBarApps": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "PolicyDetails": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "PolicyIdentifierString": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "PolicyLastUpdatedTime": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "PolicyName": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "PopulateNumberOfTelephoneNumbers": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "PopulateNumberOfVoiceUsers": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "PreventCompletion": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "PreventTollBypass": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "PrimarySmtpAddress": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "Priority": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "PrivacyLinkDisplayEnabled": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "PrivacyStatementURL": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "PrivateCatalogApps": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "PrivateCatalogAppsType": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "ProhibitSendQuota": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "ProhibitSendReceiveQuota": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "PublicFolderHierarchyMailboxCountQuota": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "QuarantineMessageStore": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "ReadReceiptsEnabledType": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "ReceivedAfterDate": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "ReceivedBeforeDate": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "RecipientIdType": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "RecipientLimits": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "RecoverableItemsQuota": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "RecoverableItemsWarningQuota": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "RedirectTo": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "RejectMessagesFromSendersOrMembers": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "RemoteCredential": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "RemoteHostName": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "RemoteTargetDatabase": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "RequireAllSendersAreAuthenticated": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "RequireSenderAuthenticationEnabled": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "ResourceAccountContentAccess": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "ResourceCapacity": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "ResourceEmailAddresses": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "RestrictedSenderList": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "ResultSize": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "RoleAssignmentPolicy": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "Room": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "RowCount": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "RuleErrorAction": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "SCLDeleteEnabled": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "SCLJunkEnabled": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "SCLQuarantineEnabled": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "SCLRejectEnabled": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "SIPResourceIdentifier": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "ScreenSharingMode": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "SearchDumpster": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "SearchDumpsterOnly": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "SearchQuery": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "SenderAddressLocation": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "SenderOrAuthor": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "SentTo": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "SetAuditSeverity": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "ShardRelevancyFeatureStore": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "SharePointResources": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "Shared": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "SharingPermissionFlags": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "ShowDetails": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "SimpleUrl": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "SkipMailboxRegionValidation": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "SkipUserPolicies": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "SmtpClientAuthenticationDisabled": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "SoftDeletedMailUser": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "SoftDeletedMailbox": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "SoftDeletedUser": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "Source": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "SourceEndpoint": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "SourceId": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "SourceMailbox": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "StartAfter": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "StartDate": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "StartingRowIndex": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "StatusMailRecipients": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "StopProcessingRules": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "StopRuleProcessing": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "SubjectContainsWords": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "SubjectOrBodyContainsWords": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "SubjectOrName": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "SuiteServiceStorage": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "SupervisionTags": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "SuspendWhenReadyToComplete": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "SyncMailboxLocationGuids": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "TargetAllMDBs": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "TargetDatabases": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "TargetDeliveryDomain": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "TargetEndpoint": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "TargetFolder": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "TargetMailbox": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "Tenant": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "TenantAllowBlockLists": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "TenantDefaultPolicy": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "TimeZone": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "Trustee": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "Type": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "UMDataStorage": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "UMGrammar": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "UMMailboxPolicy": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "UnifiedGroupAccessType": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "UseDatabaseQuotaDefaults": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "User": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "UserPrincipalName": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "ValidateOnly": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "ValidationStatus": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "WindowsLiveID": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "parameter": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            }
+          }
+        },
+        "RawData": {
+          "type": "text",
+          "fields": {
+            "keyword": {
+              "type": "keyword",
+              "ignore_above": 256
+            }
+          }
+        },
+        "RecordType": {
+          "type": "keyword",
+          "normalizer": "case_insensitive"
+        },
+        "ResultCount": {
+          "type": "long"
+        },
+        "ResultIndex": {
+          "type": "long"
+        },
+        "RunspaceId": {
+          "type": "keyword",
+          "normalizer": "case_insensitive"
+        },
+        "SharePointMetaData": {
+          "properties": {
+            "DocumentLastModifier": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "FileName": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "FileOwner": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "FilePathUrl": {
+              "type": "text"
+            },
+            "ItemCreationTime": {
+              "type": "date"
+            },
+            "ItemLastModifiedTime": {
+              "type": "date"
+            },
+            "SiteCollectionGuid": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "UniqueID": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            }
+          }
+        },
+        "SharingInformation": {
+          "properties": {
+            "RecipientEmail": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "ResharePermission": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            }
+          }
+        },
+        "Target": {
+          "properties": {
+            "type_0": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "type_1": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "type_2": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "type_3": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "type_4": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            },
+            "type_5": {
+              "type": "keyword",
+              "normalizer": "case_insensitive"
+            }
+          }
+        },
+        "UserIds": {
+          "type": "keyword",
+          "normalizer": "case_insensitive"
+        },
+        "_uid": {
+          "type": "keyword",
+          "normalizer": "case_insensitive"
+        }
+      }
+    }
+  },
+  "composed_of": [
+    "custom-metadata-v2",
+    "ip-domain-detail-v2",
+    "user-agent-v1"
+  ],
+  "priority": 200,
+  "version": 2,
+  "_meta": {
+    "description": "Office 365, E3 Audit & Security Compliance Logs Index",
+    "version": "v1",
+    "short_name": "o365-e3-audit-logs-v1",
+    "requires_prefix": true
+  }
+}

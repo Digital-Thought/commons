@@ -1,0 +1,33 @@
+{
+  "policy": {
+    "phases": {
+      "warm": {
+        "min_age": "30d",
+        "actions": {
+          "readonly": {},
+          "set_priority": {
+            "priority": 50
+          }
+        }
+      },
+      "hot": {
+        "min_age": "0ms",
+        "actions": {
+          "rollover": {
+            "max_size": "50gb",
+            "max_age": "90d"
+          },
+          "set_priority": {
+            "priority": 100
+          }
+        }
+      }
+    }
+  },
+  "_meta": {
+    "description": "Default Logs Lifecycle Policy",
+    "version": "v1",
+    "short_name": "logs",
+    "requires_prefix": false
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "template": {
+    "mappings": {
+      "_source": {
+        "enabled": true
+      },
+      "dynamic_templates": [
+        {
+          "url": {
+            "path_match": "url_details.url",
+            "mapping": {
+              "type": "text"
+            }
+          }
+        },
+        {
+          "url_domain": {
+            "path_match": "url_details.url_domain",
+            "mapping": {
+              "type": "keyword"
+            }
+          }
+        },
+        {
+          "is_suspicious": {
+            "path_match": "url_details.is_suspicious",
+            "mapping": {
+              "type": "boolean"
+            }
+          }
+        },
+        {
+          "reverse_ip": {
+            "path_match": "url_details.parameters",
+            "mapping": {
+              "type": "nested",
+              "properties": {
+                "name": {
+                  "type": "keyword"
+                },
+                "value": {
+                  "type": "keyword"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  "_meta": {
+    "description": "URL Details Component",
+    "version": "v1",
+    "short_name": "url-detail-v1",
+    "requires_prefix": false
+  }
+}

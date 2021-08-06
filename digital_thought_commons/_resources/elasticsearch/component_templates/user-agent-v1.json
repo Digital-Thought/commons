@@ -1,0 +1,69 @@
+{
+  "template": {
+    "mappings": {
+      "_source": {
+        "enabled": true
+      },
+      "properties": {
+        "user_agent": {
+          "properties": {
+            "user_agent": {
+              "type": "keyword"
+            },
+            "friendly": {
+              "type": "keyword"
+            },
+            "browser_family": {
+              "type": "keyword"
+            },
+            "browser_version_string": {
+              "type": "keyword"
+            },
+            "os_family": {
+              "type": "keyword"
+            },
+            "os_version_string": {
+              "type": "keyword"
+            },
+            "device_family": {
+              "type": "keyword"
+            },
+            "device_brand": {
+              "type": "keyword"
+            },
+            "device_model": {
+              "type": "keyword"
+            },
+            "is_mobile": {
+              "type": "boolean"
+            },
+            "is_tablet": {
+              "type": "boolean"
+            },
+            "is_pc": {
+              "type": "boolean"
+            },
+            "is_touch_capable": {
+              "type": "boolean"
+            },
+            "is_bot": {
+              "type": "boolean"
+            },
+            "browser_version": {
+              "type": "keyword"
+            },
+            "os_version": {
+              "type": "keyword"
+            }
+          }
+        }
+      }
+    }
+  },
+  "_meta": {
+    "description": "User Agent Component",
+    "version": "v1",
+    "short_name": "user-agent-v1",
+    "requires_prefix": false
+  }
+}

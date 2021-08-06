@@ -1,0 +1,64 @@
+name: Default
+description: Default Microsoft Excel Spreadsheet Template
+
+formats:
+  - name: bold
+    settings:
+      bold: true
+
+  - name: date_time_am_pm
+    settings:
+      num_format: dd/mm/yyyy hh:mm AM/PM
+
+  - name: header_field
+    settings:
+      bold: true
+      align: left
+      valign: vcenter
+      font_color: '#FFFFFF'
+      bg_color: '#4473C4'
+
+  - name: grey_merged_field
+    settings:
+      bold: true
+      align: center
+      valign: vcenter
+      font_color: '#FFFFFF'
+      bg_color: '#A4A5A4'
+
+worksheets:
+  - name: sheet1
+    label: Default Sheet
+
+    formattings:
+      columns:
+        - first: 0
+          last: 0
+          format: bold
+          width: 16
+      rows:
+        - row: 0
+          format: header_field
+
+    freeze_pane:
+      column: 1
+      row: 1
+
+#    merge_ranges:
+#      - range: 'B4:D4'
+#        value: Hello
+#        format: bold
+#
+#      - range: 'E8:G8'
+#        value: Hello2
+#        format: grey_merged_field
+#
+#    preset_values:
+#      - value: Hello World
+#        row: 5
+#        column: 5
+#
+#      - value: Bob the Builder
+#        row: 6
+#        column: 6
+#        format: header_field

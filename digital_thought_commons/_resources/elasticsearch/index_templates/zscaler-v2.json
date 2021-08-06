@@ -1,0 +1,196 @@
+{
+  "index_patterns": [
+    "<prefix>-zscaler-v2-*"
+  ],
+  "template": {
+    "settings": {
+      "number_of_shards": 1,
+      "number_of_replicas": 1,
+      "index.lifecycle.name": "logs",
+      "index.lifecycle.rollover_alias": "<prefix>-zscaler",
+      "analysis": {
+        "normalizer": {
+          "case_insensitive": {
+            "type": "custom",
+            "filter": [
+              "lowercase"
+            ]
+          }
+        }
+      }
+    },
+    "mappings": {
+      "properties": {
+        "event_time": {
+          "type": "date"
+        },
+        "logged_time": {
+          "type": "date"
+        },
+        "user": {
+          "type": "keyword",
+          "normalizer": "case_insensitive"
+        },
+        "user_domain": {
+          "type": "keyword",
+          "normalizer": "case_insensitive"
+        },
+        "url": {
+          "type": "text"
+        },
+        "url_domain": {
+          "type": "keyword",
+          "normalizer": "case_insensitive"
+        },
+        "policy_action": {
+          "type": "keyword",
+          "normalizer": "case_insensitive"
+        },
+        "received_bytes": {
+          "type": "long"
+        },
+        "sent_bytes": {
+          "type": "long"
+        },
+        "total_bytes": {
+          "type": "long"
+        },
+        "md5": {
+          "type": "keyword",
+          "normalizer": "case_insensitive"
+        },
+        "location": {
+          "type": "keyword",
+          "normalizer": "case_insensitive"
+        },
+        "client_ip": {
+          "type": "ip"
+        },
+        "client_external_ip": {
+          "type": "ip"
+        },
+        "server_ip": {
+          "type": "ip"
+        },
+        "request": {
+          "type": "keyword",
+          "normalizer": "case_insensitive"
+        },
+        "response": {
+          "type": "keyword",
+          "normalizer": "case_insensitive"
+        },
+        "url_categorization_method": {
+          "type": "keyword",
+          "normalizer": "case_insensitive"
+        },
+        "file_type": {
+          "type": "keyword",
+          "normalizer": "case_insensitive"
+        },
+        "file_name": {
+          "type": "keyword",
+          "normalizer": "case_insensitive"
+        },
+        "policy_type": {
+          "type": "keyword",
+          "normalizer": "case_insensitive"
+        },
+        "source": {
+          "type": "keyword",
+          "normalizer": "case_insensitive"
+        },
+        "entry_id": {
+          "type": "keyword",
+          "normalizer": "case_insensitive"
+        },
+        "cloud_application_class": {
+          "type": "keyword",
+          "normalizer": "case_insensitive"
+        },
+        "cloud_application": {
+          "type": "keyword",
+          "normalizer": "case_insensitive"
+        },
+        "url_class": {
+          "type": "keyword",
+          "normalizer": "case_insensitive"
+        },
+        "url_super_category": {
+          "type": "keyword",
+          "normalizer": "case_insensitive"
+        },
+        "url_category": {
+          "type": "keyword",
+          "normalizer": "case_insensitive"
+        },
+        "threat_category": {
+          "type": "keyword",
+          "normalizer": "case_insensitive"
+        },
+        "threat_name": {
+          "type": "keyword",
+          "normalizer": "case_insensitive"
+        },
+        "department": {
+          "type": "keyword",
+          "normalizer": "case_insensitive"
+        },
+        "protocol_type": {
+          "type": "keyword",
+          "normalizer": "case_insensitive"
+        },
+        "client_session_reused": {
+          "type": "keyword",
+          "normalizer": "case_insensitive"
+        },
+        "certificate_chain_validity": {
+          "type": "keyword",
+          "normalizer": "case_insensitive"
+        },
+        "server_session_reused": {
+          "type": "keyword",
+          "normalizer": "case_insensitive"
+        },
+        "server_certificate_validation_type": {
+          "type": "keyword",
+          "normalizer": "case_insensitive"
+        },
+        "server_certificate_validation_period": {
+          "type": "keyword",
+          "normalizer": "case_insensitive"
+        },
+        "server_wildcard_certificate": {
+          "type": "keyword",
+          "normalizer": "case_insensitive"
+        },
+        "server_certificate_self_signed": {
+          "type": "keyword",
+          "normalizer": "case_insensitive"
+        },
+        "dlp_md5": {
+          "type": "keyword",
+          "normalizer": "case_insensitive"
+        },
+        "dlp_identifier": {
+          "type": "keyword",
+          "normalizer": "case_insensitive"
+        }
+      }
+    }
+  },
+  "composed_of": [
+    "custom-metadata-v1",
+    "user-agent-v1",
+    "ip-domain-detail-v1",
+    "url-detail-v1"
+  ],
+  "priority": 200,
+  "version": 2,
+  "_meta": {
+    "description": "ZScaler Index v2",
+    "version": "v1",
+    "short_name": "zscaler-v2",
+    "requires_prefix": true
+  }
+}

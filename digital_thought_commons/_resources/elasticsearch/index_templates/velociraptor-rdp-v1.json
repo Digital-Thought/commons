@@ -1,0 +1,100 @@
+{
+  "index_patterns": [
+    "<prefix>-velociraptor-rdp-v1-*"
+  ],
+  "template": {
+    "settings": {
+      "number_of_shards": 1,
+      "number_of_replicas": 1,
+      "index.lifecycle.name": "logs",
+      "index.lifecycle.rollover_alias": "<prefix>-velociraptor-rdp",
+      "analysis": {
+        "normalizer": {
+          "case_insensitive": {
+            "type": "custom",
+            "filter": [
+              "lowercase"
+            ]
+          }
+        }
+      }
+    },
+    "mappings": {
+      "properties": {
+        "event_time": {
+          "type": "date"
+        },
+        "event_time_raw": {
+          "type": "keyword",
+          "normalizer": "case_insensitive"
+        },
+        "computer": {
+          "type": "keyword",
+          "normalizer": "case_insensitive"
+        },
+        "user_name": {
+          "type": "keyword",
+          "normalizer": "case_insensitive"
+        },
+        "event_id": {
+          "type": "long"
+        },
+        "logon_type": {
+          "type": "keyword",
+          "normalizer": "case_insensitive"
+        },
+        "logon_type_friendly": {
+          "type": "keyword",
+          "normalizer": "case_insensitive"
+        },
+        "source_ip": {
+          "type": "ip"
+        },
+        "target_domain_name": {
+          "type": "keyword",
+          "normalizer": "case_insensitive"
+        },
+        "description": {
+          "type": "keyword",
+          "normalizer": "case_insensitive"
+        },
+        "source": {
+          "type": "keyword",
+          "normalizer": "case_insensitive"
+        },
+        "flow_id": {
+          "type": "keyword",
+          "normalizer": "case_insensitive"
+        },
+        "client_id": {
+          "type": "keyword",
+          "normalizer": "case_insensitive"
+        },
+        "fqdn": {
+          "type": "keyword",
+          "normalizer": "case_insensitive"
+        },
+        "message_raw": {
+          "type": "text"
+        },
+        "source_ip_raw": {
+          "type": "keyword",
+          "normalizer": "case_insensitive"
+        }
+      }
+    }
+  },
+  "composed_of": [
+    "custom-metadata-v1",
+    "event-message-v1",
+    "ip-domain-detail-v2"
+  ],
+  "priority": 200,
+  "version": 2,
+  "_meta": {
+    "description": "Velociraptor RDP Index v1",
+    "version": "v1",
+    "short_name": "velociraptor-rdp-v1",
+    "requires_prefix": true
+  }
+}

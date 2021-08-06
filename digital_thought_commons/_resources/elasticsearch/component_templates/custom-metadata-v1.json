@@ -1,0 +1,41 @@
+{
+  "template": {
+    "mappings": {
+      "_source": {
+        "enabled": true
+      },
+      "dynamic_templates": [
+        {
+          "keywords": {
+            "path_match": "custom_metadata.text.*",
+            "mapping": {
+              "type": "keyword"
+            }
+          }
+        },
+        {
+          "dates": {
+            "path_match": "custom_metadata.dates.*",
+            "mapping": {
+              "type": "date"
+            }
+          }
+        },
+        {
+          "dates": {
+            "path_match": "custom_metadata.long.*",
+            "mapping": {
+              "type": "long"
+            }
+          }
+        }
+      ]
+    }
+  },
+  "_meta": {
+    "description": "Custom Metadata Component",
+    "version": "v1",
+    "short_name": "custom-metadata-v1",
+    "requires_prefix": false
+  }
+}

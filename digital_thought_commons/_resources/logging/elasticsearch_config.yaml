@@ -1,0 +1,50 @@
+version: 1
+
+formatters:
+  simple_file:
+    format: '%(asctime)s - %(levelname)s - %(processName)s.%(process)d - %(threadName)s.%(thread)d - %(module)s.%(funcName)s.%(lineno)d - %(message)s'
+  elastic:
+    format: 'ELASTIC: %(asctime)s - %(levelname)s - %(processName)s.%(process)d - %(threadName)s.%(thread)d - %(module)s.%(funcName)s.%(lineno)d - %(message)s'
+
+handlers:
+  logfile_ALL:
+    class: logging.handlers.TimedRotatingFileHandler
+    level: DEBUG
+    formatter: simple_file
+    filename:
+    when: D
+    interval: 1
+    encoding: utf8
+
+  logfile_ERR:
+    class: logging.handlers.TimedRotatingFileHandler
+    level: ERROR
+    formatter: simple_file
+    filename:
+    when: D
+    interval: 1
+    encoding: utf8
+
+  logfile_ELASTIC:
+    class: logging.handlers.TimedRotatingFileHandler
+    level: DEBUG
+    formatter: elastic
+    filename:
+    when: D
+    interval: 1
+    encoding: utf8
+
+loggers:
+  defaultLogger:
+    level: INFO
+    handlers: [ logfile_ALL,logfile_ERR ]
+    propagate: no
+
+  elastic:
+    level: INFO
+    handlers: [ logfile_ELASTIC ]
+    propagate: no
+
+root:
+  level: INFO
+  handlers: [ logfile_ALL,logfile_ERR ]
