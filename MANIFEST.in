@@ -3,6 +3,7 @@ include digital_thought_commons/_resources/elasticsearch/component_templates/*
 include digital_thought_commons/_resources/elasticsearch/index_templates/*
 include digital_thought_commons/_resources/elasticsearch/lifecycles/*
 include digital_thought_commons/_resources/grok/*
+include digital_thought_commons/_resources/cache/*
 include digital_thought_commons/_resources/locations/*
 include digital_thought_commons/_resources/logging/*
 include digital_thought_commons/_resources/microsoft/excel/*
