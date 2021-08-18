@@ -12,7 +12,7 @@ with open("digital_thought/commons/version", "r") as fh:
     version_info = fh.read()
 
 setuptools.setup(
-    name="commons",
+    name="digital-thought-commons",
     version=version_info,
     author="Digital Thought",
     author_email="development@digital-thought.org",
