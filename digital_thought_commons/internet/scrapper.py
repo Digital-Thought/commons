@@ -7,7 +7,7 @@ import logging
 
 class Scrapper():
 
-    def __init__(self, tor_proxy=None, internet_proxy=None, headless=True, chromium_driver="chromedriver") -> None:
+    def __init__(self, tor_proxy=None, internet_proxy=None, headless=True, chromium_driver="chromedriver", data_dir='./data/chromium') -> None:
         super().__init__()
 
         if tor_proxy is None:
@@ -16,7 +16,7 @@ class Scrapper():
         self.internet_proxy = internet_proxy
         self.headless = headless
         self.chromium_driver = chromium_driver
-
+        self.data_dir = data_dir
         self.tor_scrapper = None
         self.internet_scrapper = None
 
@@ -27,6 +27,7 @@ class Scrapper():
         }
         options = wd.ChromeOptions()
         options.add_experimental_option('prefs', prefs)
+        options.add_argument(f"user-data-dir={self.data_dir}")
         if self.headless:
             options.add_argument('--headless')
             options.add_argument('--disable-gpu')
