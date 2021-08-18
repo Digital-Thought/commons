@@ -26,3 +26,4 @@ elasticsearch
 sqlalchemy
 iso8601
 xmltodict
+scraperapi-sdk

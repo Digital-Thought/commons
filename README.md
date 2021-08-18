@@ -23,7 +23,7 @@ pip install digital-thought-commons
 [Internet Utilities](https://github.com/Digital-Thought/commons/blob/v0.01.00-beta15/digital_thought_commons/internet/README.md): Custom utilities for internet (e.g. scrappers, TOR requester)<br>
 [Logging](https://github.com/Digital-Thought/commons/blob/v0.01.00-beta15/digital_thought_commons/logging/README.md): Logging configuration and setup.  Logging used throughout all Commons Libraries<br>
 [Microsoft](https://github.com/Digital-Thought/commons/blob/v0.01.00-beta15/digital_thought_commons/microsoft/README.md): Utilities to work with Microsoft services and applications (e.g. Excel)<br>
-[REST API Lookups](https://github.com/Digital-Thought/commons/blob/v0.01.00-beta15/digital_thought_commons/restful_lookups/README.md): Libraries to assist with performing lookups to various internet based API services.  With [Caching](digital_thought_commons/cache/README.md) facility enabled<br>
+[REST API Lookups](https://github.com/Digital-Thought/commons/blob/v0.01.00-beta15/digital_thought_commons/restful_lookups/README.md): Libraries to assist with performing lookups to various internet based API services.  With [Caching](digital_thought/commons/cache/README.md) facility enabled<br>
 [String Utilities](https://github.com/Digital-Thought/commons/blob/v0.01.00-beta15/digital_thought_commons/string_utils/README.md): Various utilities to work with Strings
 
 ***
