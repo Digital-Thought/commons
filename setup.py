@@ -8,11 +8,11 @@ with open("README.md", "r") as fh:
 with open("requirements.txt", "r") as fh:
     requirements = fh.read().splitlines()
 
-with open("digital_thought/commons/version", "r") as fh:
+with open("digital_thought_commons/version", "r") as fh:
     version_info = fh.read()
 
 setuptools.setup(
-    name="digital-thought-commons",
+    name="digital_thought_commons",
     version=version_info,
     author="Digital Thought",
     author_email="development@digital-thought.org",
@@ -33,7 +33,7 @@ setuptools.setup(
     include_package_data=True,
     entry_points={
         'console_scripts': [
-            'ip_enrichment = digital_thought.commons.enrichers:main',
+            'ip_enrichment = digital_thought_commons.enrichers:main',
         ],
     }
 )
