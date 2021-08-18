@@ -3,11 +3,19 @@ from selenium.webdriver.chrome import webdriver
 from urllib3.util import parse_url
 from typing import List
 import logging
+import platform
+import os
 
 
-class Scrapper():
+class Scrapper(object):
 
-    def __init__(self, tor_proxy=None, internet_proxy=None, headless=True, chromium_driver="chromedriver", data_dir='./data/chromium') -> None:
+    default_chromium_paths = {
+        "Windows": ['./chromedriver.exe', './bin/chromedriver.exe'],
+        "Linux": ['./chromedriver', './bin/chromedriver'],
+        "Darwin": ['./chromedriver', './bin/chromedriver']
+    }
+
+    def __init__(self, tor_proxy=None, internet_proxy=None, headless=True, chromium_driver=None, data_dir=None) -> None:
         super().__init__()
 
         if tor_proxy is None:
@@ -19,6 +27,17 @@ class Scrapper():
         self.data_dir = data_dir
         self.tor_scrapper = None
         self.internet_scrapper = None
+        self.__validate_chromium_driver__()
+
+    def __validate_chromium_driver__(self):
+        system = platform.system()
+        if not self.chromium_driver:
+            for path in self.default_chromium_paths[system]:
+                if os.path.exists(path):
+                    self.chromium_driver = path
+
+        if not self.chromium_driver:
+            raise Exception(f'Unable to locate chromium driver in any of the following default locations: {self.default_chromium_paths[system]}')
 
     def __initialise_scrapper(self, proxy) -> webdriver.WebDriver:
         prefs = {
