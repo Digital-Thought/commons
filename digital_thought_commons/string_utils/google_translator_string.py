@@ -17,10 +17,10 @@ def __translate_string__(text: str, target_local: str) -> str:
 
 
 class GoogleTranslateString(object):
-    __cached_translations__ = {}
 
     def __init__(self, string: str) -> None:
         super().__init__()
+        self.__cached_translations__ = {}
         self.original_string = string
 
     def __str__(self) -> str:
@@ -43,3 +43,13 @@ class GoogleTranslateString(object):
 
     def get_original_locale(self) -> str:
         return self.__translate(locale=locale.getdefaultlocale()[0])['detectedSourceLanguage']
+
+
+__set_auth_file('/Users/matthew.westwood-hill/Downloads/mwh-test-project-82c9bf93c656.json')
+string = GoogleTranslateString("Вы должны быть авторизованы, чтобы выполнить это действие или просмотреть эту страницу")
+string2 = GoogleTranslateString("Вы должны быть авторизованы")
+print(string.get_original())
+print(string.get_original_locale())
+print(string.get_as_locale('fr'))
+print(string.get_locale_string())
+print(string2.get_locale_string())
