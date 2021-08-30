@@ -28,3 +28,4 @@ iso8601
 xmltodict
 scraperapi-sdk
 google-cloud-translate==2.0.1
+langdetect
