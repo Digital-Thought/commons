@@ -1,5 +1,6 @@
 import json
 import locale
+import logging
 
 from google.cloud import translate_v2 as translate
 import os
@@ -33,13 +34,25 @@ class GoogleTranslateString(object):
         return self.__cached_translations__[locale]
 
     def get_locale_string(self) -> str:
-        return self.__translate(locale=locale.getdefaultlocale()[0])['translatedText']
+        try:
+            return self.__translate(locale=locale.getdefaultlocale()[0])['translatedText']
+        except Exception as ex:
+            logging.warning(str(ex))
+            return self.original_string
 
     def get_as_locale(self, locale: str) -> str:
-        return self.__translate(locale=locale)['translatedText']
+        try:
+            return self.__translate(locale=locale)['translatedText']
+        except Exception as ex:
+            logging.warning(str(ex))
+            return self.original_string
 
     def get_original(self) -> str:
         return self.original_string
 
     def get_original_locale(self) -> str:
-        return self.__translate(locale=locale.getdefaultlocale()[0])['detectedSourceLanguage']
+        try:
+            return self.__translate(locale=locale.getdefaultlocale()[0])['detectedSourceLanguage']
+        except Exception as ex:
+            logging.warning(str(ex))
+            return "UNKNOWN"
