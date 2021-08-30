@@ -43,13 +43,3 @@ class GoogleTranslateString(object):
 
     def get_original_locale(self) -> str:
         return self.__translate(locale=locale.getdefaultlocale()[0])['detectedSourceLanguage']
-
-
-__set_auth_file('/Users/matthew.westwood-hill/Downloads/mwh-test-project-82c9bf93c656.json')
-string = GoogleTranslateString("Вы должны быть авторизованы, чтобы выполнить это действие или просмотреть эту страницу")
-string2 = GoogleTranslateString("Вы должны быть авторизованы")
-print(string.get_original())
-print(string.get_original_locale())
-print(string.get_as_locale('fr'))
-print(string.get_locale_string())
-print(string2.get_locale_string())
