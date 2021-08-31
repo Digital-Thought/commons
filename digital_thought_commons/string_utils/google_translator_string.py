@@ -20,7 +20,7 @@ def __translate_string__(text: str, target_local: str):
             logging.info(f'Source text is already {target_local}.  Not performing translation.')
             return {'translatedText': text, 'detectedSourceLanguage': target_local, 'input': text}
     except Exception as ex:
-        logging.exception(f'The following error occured while attempting to detect the language of string "{text}".'
+        logging.warning(f'The following error occured while attempting to detect the language of string "{text}".'
                           f' Error: {str(ex)}')
 
     if os.getenv('GOOGLE_APPLICATION_CREDENTIALS') is None:
