@@ -15,9 +15,13 @@ def __translate_string__(text: str, target_local: str):
     if target_local.startswith('en_'):
         target_local = target_local.split("_")[0].strip()
 
-    if detect(text) == target_local:
-        logging.info(f'Source text is already {target_local}.  Not performing translation.')
-        return {'translatedText': text, 'detectedSourceLanguage': target_local, 'input': text}
+    try:
+        if detect(text) == target_local:
+            logging.info(f'Source text is already {target_local}.  Not performing translation.')
+            return {'translatedText': text, 'detectedSourceLanguage': target_local, 'input': text}
+    except Exception as ex:
+        logging.exception(f'The following error occured while attempting to detect the language of string "{text}".'
+                          f' Error: {str(ex)}')
 
     if os.getenv('GOOGLE_APPLICATION_CREDENTIALS') is None:
         logging.warning('No GOOGLE_APPLICATION_CREDENTIALS defined. No translation performed.')
