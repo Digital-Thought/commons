@@ -47,10 +47,11 @@ class Scrapper(object):
         options = wd.ChromeOptions()
         options.add_experimental_option('prefs', prefs)
         options.add_argument(f"user-data-dir={self.data_dir}")
+        options.add_argument('--disable-blink-features=AutomationControlled')
+        options.add_argument('--no-sandbox')
         if self.headless:
             options.add_argument('--headless')
             options.add_argument('user-agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.159 Safari/537.36')
-            options.add_argument('--disable-gpu')
             options.headless = True
         if proxy:
             options.add_argument(proxy)
