@@ -99,7 +99,7 @@ def get_images_as_base64_strings(base_url, requester, *html_strings) -> List[dic
                 if not ref.lower().startswith('data:'):
                     ref = urljoin(base_url, ref)
                     response = requester.get(ref)
-                    if response.status_code in [200, 201]:
+                    if response.status_code in [200, 201] and response.headers['Content-Type'].startswith('image'):
                         images.append({'base64': base64.to_base64_string(response.content),
                                        'type': response.headers['Content-Type']})
                 else:
