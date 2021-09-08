@@ -106,8 +106,3 @@ def get_images_as_base64_strings(base_url, requester, *html_strings) -> List[dic
                     images.append({'base64': ref.split(',')[1], 'type': ref.split(':')[1].split(';')[0]})
 
     return images
-
-from digital_thought_commons import internet
-rq = internet.new_requester()
-content = rq.get('https://dopiaza.org/tools/datauri/examples/index.php')
-print(get_images_as_base64_strings('https://dopiaza.org/tools/datauri/examples/index.php', rq, content.content))
