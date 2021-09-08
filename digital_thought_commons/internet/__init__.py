@@ -3,6 +3,10 @@ from urllib.parse import unquote
 import requests
 from requests.adapters import HTTPAdapter
 from requests.packages.urllib3.util.retry import Retry
+from typing import List
+from bs4 import BeautifulSoup
+from urllib.parse import urljoin
+from digital_thought_commons import base64
 
 from digital_thought_commons.internet import requester
 
@@ -30,7 +34,8 @@ def new_requester(tor_proxy=None, internet_proxy=None):
 
 
 def retry_request_session(retries=3, backoff_factor=0.3, status_forcelist=(400, 500, 502, 504), timeout=60,
-                          user_agent='Mozilla/5.0 (Windows NT 10.0; rv:78.0) Gecko/20100101 Firefox/78.0', headers={}, proxy=None):
+                          user_agent='Mozilla/5.0 (Windows NT 10.0; rv:78.0) Gecko/20100101 Firefox/78.0', headers={},
+                          proxy=None):
     base_headers = {'User-Agent': user_agent}
     base_headers.update(headers)
     request_session = requests.Session()
@@ -82,3 +87,27 @@ def check_supports_range(requester_session, source_url):
         raise DownloadNotFound(f'URL {source_url} not found.  Download failed.')
 
     return resp.status_code == 206
+
+
+def get_images_as_base64_strings(base_url, requester, *html_strings) -> List[dict]:
+    images: List[dict] = []
+    for html in html_strings:
+        soup = BeautifulSoup(html, 'html.parser')
+        for img in soup.find_all('img'):
+            if img.has_attr('src'):
+                ref: str = img['src']
+                if not ref.lower().startswith('data:'):
+                    ref = urljoin(base_url, ref)
+                    response = requester.get(ref)
+                    if response.status_code in [200, 201]:
+                        images.append({'base64': base64.to_base64_string(response.content),
+                                       'type': response.headers['Content-Type']})
+                else:
+                    images.append({'base64': ref.split(',')[1], 'type': ref.split(':')[1].split(';')[0]})
+
+    return images
+
+from digital_thought_commons import internet
+rq = internet.new_requester()
+content = rq.get('https://dopiaza.org/tools/datauri/examples/index.php')
+print(get_images_as_base64_strings('https://dopiaza.org/tools/datauri/examples/index.php', rq, content.content))
