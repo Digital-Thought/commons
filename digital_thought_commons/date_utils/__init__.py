@@ -9,7 +9,24 @@ DATE_FORMATS = ['%d. %b %Y', '%Y-%m-%d', '%Y-%m-%d %H:%M:%S', '%B %d, %Y', '%d %
                 '%m/%d/%Y', '%m/%d/%y', '%d/%m/%Y', '%d/%m/%y', '%m/%d/%Y %H:%M:%S', '%Y-%m-%d', '%Y-%m-%d', '%Y-%m-%d', '%a %b %d %Y',
                 '%Y-%m-%d', '%a, %d %b %Y %H:%M:%S', '%A, %B %d, %Y %H:%M', '%Y-%m-%d %H:%M:%S.%f', '%a, %d %b %Y %H:%M:%S',
                 '%m-%d-%Y, %I:%M %p', '%B %d, %Y at %I:%M %p', '%B %d, %Y at %H:%M', '%A, %d %B %Y %H:%M:%S',
-                '%a, %d %b %Y %H:%M:%S %z', '%I:%M %p - %d %B, %Y', '%d %b %Y', '%Y/%m']
+                '%a, %d %b %Y %H:%M:%S %z', '%I:%M %p - %d %B, %Y', '%d %b %Y', '%Y/%m', '%d %B %Y']
+
+RUSSIAN_MONTH_TRANSLATIONS = {
+    "январь": "January",
+    "февраль": "February",
+    "март": "March",
+    "апрель": "April",
+    "май": "May",
+    "июнь": "June",
+    "июль": "July",
+    "август": "August",
+    "Августа": "August",
+    "сентябрь": "September",
+    "Сентября": "September",
+    "октябрь": "October",
+    "ноябрь": "November",
+    "декабрь": "December"
+}
 
 TZ_ABR_OFFSETS = {'ACDT': '+1030', 'ACST': '+0930', 'ACT': '−0500', 'ACWST': '+0845', 'ADT': '−0300', 'AEDT': '+1100',
                   'AEST': '+1000', 'AFT': '+0430', 'AKDT': '−0800', 'AKST': '−0900', 'ALMT': '+0600', 'AMST': '−0300',
@@ -86,6 +103,12 @@ def convert_string_datetime(string: str, timezone=pytz.UTC, before_current_datet
     :rtype: dt.datetime
     """
     date_time = None
+
+    for key in RUSSIAN_MONTH_TRANSLATIONS:
+        if key in string:
+            string = string.replace(key, RUSSIAN_MONTH_TRANSLATIONS[key])
+            break
+
     try:
         date_time = iso8601.parse_date(string, default_timezone=timezone)
     except:
