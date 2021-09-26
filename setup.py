@@ -34,6 +34,8 @@ setuptools.setup(
     entry_points={
         'console_scripts': [
             'ip_enrichment = digital_thought_commons.enrichers:main',
+            'init_secrets_store = digital_thought_commons.secrets_store:main_init_secrets_store',
+            'add_secret = digital_thought_commons.secrets_store:main_add_secret'
         ],
     }
 )
