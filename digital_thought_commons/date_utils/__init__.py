@@ -10,7 +10,7 @@ DATE_FORMATS = ['%d. %b %Y', '%Y-%m-%d', '%Y-%m-%d %H:%M:%S', '%B %d, %Y', '%d %
                 '%Y-%m-%d', '%a, %d %b %Y %H:%M:%S', '%A, %B %d, %Y %H:%M', '%Y-%m-%d %H:%M:%S.%f', '%a, %d %b %Y %H:%M:%S',
                 '%m-%d-%Y, %I:%M %p', '%B %d, %Y at %I:%M %p', '%B %d, %Y at %H:%M', '%A, %d %B %Y %H:%M:%S',
                 '%a, %d %b %Y %H:%M:%S %z', '%I:%M %p - %d %B, %Y', '%d %b %Y', '%Y/%m', '%d %B %Y', '%d %B %Y %H:%M:%S', '%b %d, %Y',
-                '%-d. %B %Y', '%d. %B %Y', '%B, %Y', '%B %Y', '%d/%m/%Y, %H:%M:%S', '%-m/%-d/%Y, %-I:%-M:%S %p']
+                '%-d. %B %Y', '%d. %B %Y', '%B, %Y', '%B %Y', '%d/%m/%Y, %H:%M:%S', '%m/%d/%Y, %I:%M:%S %p']
 
 RUSSIAN_MONTH_TRANSLATIONS = {
     "январь": "January",
