@@ -8,5 +8,5 @@ include digital_thought_commons/_resources/locations/*
 include digital_thought_commons/_resources/logging/*
 include digital_thought_commons/_resources/microsoft/excel/*
 include digital_thought_commons/_resources/sample_configs/*
-include digital_thought_commons/_resources/secrets_store
+include digital_thought_commons/_resources/secrets_store/*
 include digital_thought_commons/version
