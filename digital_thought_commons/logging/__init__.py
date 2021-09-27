@@ -43,9 +43,9 @@ def init(app_name, configuration_file: str = None):
         console_stream.setFormatter(formatter)
         console_stream.name = 'console_ALL'
 
-        logging_config['handlers']['logfile_ALL']['filename'] = '{}/info-{}'.format(log_folder, app_name)
-        logging_config['handlers']['logfile_ERR']['filename'] = '{}/error-{}'.format(log_folder, app_name)
-        logging_config['handlers']['logfile_ELASTIC']['filename'] = '{}/elastic-{}'.format(log_folder, app_name)
+        logging_config['handlers']['logfile_ALL']['filename'] = '{}/info-{}.log'.format(log_folder, app_name)
+        logging_config['handlers']['logfile_ERR']['filename'] = '{}/error-{}.log'.format(log_folder, app_name)
+        logging_config['handlers']['logfile_ELASTIC']['filename'] = '{}/elastic-{}.log'.format(log_folder, app_name)
         logging.config.dictConfig(logging_config)
         logging.getLogger().addHandler(console_stream)
         logging.getLogger("defaultLogger").addHandler(console_stream)
@@ -53,6 +53,10 @@ def init(app_name, configuration_file: str = None):
         logging.getLogger('console').addHandler(console_stream)
         logging.getLogger('console').debug('Logging configuration read from: {}'.format(logging_config_file))
 
+        return os.path.abspath(log_folder)
+
     else:
         logging.config.dictConfig(logging_config)
         logging.debug('Logging configuration read from: {}'.format(logging_config_file))
+
+        return None
