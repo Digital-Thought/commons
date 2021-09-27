@@ -133,7 +133,7 @@ class PersistentSettingStore(object):
             raise Exception('Unsupported value type')
 
 
-DEFAULT_CONFIG_LOCATION = './config/osint_config.yaml'
+DEFAULT_CONFIG_LOCATION = './config/app_config.yaml'
 
 
 class Configuration(dict):
