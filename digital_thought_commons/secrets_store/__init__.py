@@ -3,6 +3,8 @@ import pathlib
 import logging
 import digital_thought_commons.logging as logger
 import argparse
+import random
+import string
 
 from shutil import copyfile
 from pykeepass import PyKeePass
@@ -59,6 +61,18 @@ class SecretsStore(object):
             self.keepass_instance.add_entry(self.__store_group__(), name, '-', secret)
 
         self.save()
+
+    def create_secret(self, name: str, init_env: bool = False, length: int = 10) -> str:
+        lower = string.ascii_lowercase
+        upper = string.ascii_uppercase
+        numbers = string.digits
+        symbols = string.punctuation
+
+        secret = random.sample(lower + upper + numbers + symbols, length)
+        secret = "".join(secret)
+
+        self.add_secret(name=name, secret=secret, init_env=init_env)
+        return secret
 
     def delete_entry(self, name):
         entry = self.keepass_instance.find_entries(title=name, group=self.__store_group__(), first=True)
