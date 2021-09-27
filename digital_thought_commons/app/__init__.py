@@ -3,6 +3,7 @@ import logging
 import os
 import json
 
+from argparse import ArgumentParser
 from digital_thought_commons import logging as logger
 from art import *
 
@@ -26,7 +27,7 @@ class AbstractApp(object):
     def version(self) -> str:
         return self.app_spec["version"]
 
-    def define_args(self, arg_parser):
+    def define_args(self, arg_parser: ArgumentParser):
         raise NotImplementedError
 
     def main(self, args):
