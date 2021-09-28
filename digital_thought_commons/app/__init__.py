@@ -31,7 +31,8 @@ class AbstractFlaskApp(Flask):
     def __initialise__(self):
         self.log_path = logger.init(self.app_spec["short_name"])
         logging.info(
-            f'{self.app_spec["full_name"]} ({self.app_spec["short_name"]}), Version: {self.app_spec["version"]}')
+            f'{self.app_spec["full_name"]} ({self.app_spec["short_name"]}), Version: {self.app_spec["version"]}. '
+            f'Process ID: {os.getpid()}')
         app_art = text2art(self.app_spec["full_name"])
         if "organisation" in self.app_spec:
             print(text2art(self.app_spec["organisation"], "white_bubble"))
@@ -73,7 +74,8 @@ class AbstractApp(object):
 
         self.log_path = logger.init(self.app_spec["short_name"])
         logging.info(
-            f'{self.app_spec["full_name"]} ({self.app_spec["short_name"]}), Version: {self.app_spec["version"]}')
+            f'{self.app_spec["full_name"]} ({self.app_spec["short_name"]}), Version: {self.app_spec["version"]}. '
+            f'Process ID: {os.getpid()}')
         app_art = text2art(self.app_spec["full_name"])
         if "organisation" in self.app_spec:
             print(text2art(self.app_spec["organisation"], "white_bubble"))

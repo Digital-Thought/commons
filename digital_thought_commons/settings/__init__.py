@@ -39,7 +39,7 @@ class PersistentSettingStore(object):
         :param path: The path to the SQLite database
         :type path: str
         """
-        engine = create_engine(f'sqlite:///{path}')
+        engine = create_engine(f'sqlite:///{path}?check_same_thread=False')
         Base.metadata.create_all(engine)
         self.DBSession = sessionmaker(bind=engine)
         super().__init__()
