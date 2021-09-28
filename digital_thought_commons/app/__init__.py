@@ -12,7 +12,7 @@ from flask import Flask
 
 class AbstractFlaskApp(Flask):
 
-    def __init__(self, app_spec_path: str = None) -> None:
+    def __init__(self, app_spec_path: str = None, skip_init=False) -> None:
         if app_spec_path is None or not os.path.exists(app_spec_path):
             raise Exception(f"Invalid app_spec_path provided: {app_spec_path}")
 
@@ -25,7 +25,8 @@ class AbstractFlaskApp(Flask):
 
         self.log_path = None
         super(AbstractFlaskApp, self).__init__(self.app_spec["short_name"])
-        self.__initialise__()
+        if not skip_init:
+            self.__initialise__()
 
     def __initialise__(self):
         self.log_path = logger.init(self.app_spec["short_name"])
