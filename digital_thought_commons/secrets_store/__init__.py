@@ -97,7 +97,7 @@ class SecretsStore(object):
         self.save()
 
 
-secret_store = None
+secret_store: SecretsStore = None
 
 
 def get_secret_store(password=None):
