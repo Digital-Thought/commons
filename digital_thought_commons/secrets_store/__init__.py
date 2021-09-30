@@ -20,6 +20,7 @@ SECRETS_STORE_PATH = f"{SECRETS_STORE_DIRECTORY}/secrets.store.kdbx"
 SECRETS_TEMPLATE = str(pathlib.Path(__file__).parent.absolute()) + '/../_resources/secrets_store/secrets.store.kdbx'
 SECRETS_STORE_GROUP = "Secrets_Store"
 SECRETS_ENV_TAG = "ENV"
+SECRETS_HIDDEN_TAG = "HIDDEN"
 
 os.makedirs(SECRETS_STORE_DIRECTORY, exist_ok=True)
 
@@ -51,18 +52,24 @@ class SecretsStore(object):
             if entry.username == SECRETS_ENV_TAG:
                 os.environ[entry.title] = entry.password
 
-    def add_secret(self, name: str, secret: str, init_env: bool = False):
+    def add_secret(self, name: str, secret: str, init_env: bool = False, hidden: bool = False):
         if self.get_entry(name):
             self.delete_entry(name)
 
+        if init_env and hidden:
+            raise SecretsStoreException(f' Entry "{name}" can not be both HIDDEN and ENVIRONMENT initialised.')
+
+        tag = '-'
         if init_env:
-            self.keepass_instance.add_entry(self.__store_group__(), name, SECRETS_ENV_TAG, secret)
-        else:
-            self.keepass_instance.add_entry(self.__store_group__(), name, '-', secret)
+            tag = SECRETS_ENV_TAG
+        if hidden:
+            tag = SECRETS_HIDDEN_TAG
+
+        self.keepass_instance.add_entry(self.__store_group__(), name, tag, secret)
 
         self.save()
 
-    def create_secret(self, name: str, init_env: bool = False, length: int = 10) -> str:
+    def create_secret(self, name: str, init_env: bool = False, hidden: bool = False, length: int = 10) -> str:
         lower = string.ascii_lowercase
         upper = string.ascii_uppercase
         numbers = string.digits
@@ -71,7 +78,7 @@ class SecretsStore(object):
         secret = random.sample(lower + upper + numbers + symbols, length)
         secret = "".join(secret)
 
-        self.add_secret(name=name, secret=secret, init_env=init_env)
+        self.add_secret(name=name, secret=secret, init_env=init_env, hidden=hidden)
         return secret
 
     def delete_entry(self, name):
@@ -89,6 +96,13 @@ class SecretsStore(object):
             raise SecretsStoreException(f'Secret {name} does not exists in store.')
 
         return entry.password
+
+    def get_secret_names(self, exclude_hidden: bool = True) -> list:
+        secret_keys = []
+        for entry in self.__store_group__().entries:
+            if not(entry.username == SECRETS_HIDDEN_TAG and exclude_hidden):
+                secret_keys.append(entry.title)
+        return secret_keys
 
     def save(self):
         self.keepass_instance.save()
