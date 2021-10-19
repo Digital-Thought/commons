@@ -240,6 +240,8 @@ class Configuration(dict):
     def get(self, key, default=None):
         try:
             value = self.__getitem__(key)
+            if isinstance(value, str) and str(value).startswith('@'):
+                return os.getenv(str(value).replace('@', '').strip(), value)
             if not value:
                 return default
             return value
