@@ -143,6 +143,31 @@ class ElasticsearchConnection:
 
         return {'status': 'already_present'}
 
+    def put(self, command, json_data):
+        resp = None
+        try:
+            resp = self.request_session.put(self.root_url + command, json=json_data)
+            if resp.status_code in [200, 201]:
+                return {"success": True, "details": resp.json()}
+        except Exception as ex:
+            if resp:
+                return {"success": False, "details": resp.json(), 'error': str(ex)}
+            else:
+                return {"success": False, 'error': str(ex)}
+
+    def post(self, command, json_data):
+        resp = None
+        try:
+            resp = self.request_session.post(self.root_url + command, json=json_data)
+            if resp.status_code in [200, 201]:
+                return {"success": True, "details": resp.json()}
+        except Exception as ex:
+            if resp:
+                return {"success": False, "details": resp.json(), 'error': str(ex)}
+            else:
+                return {"success": False, 'error': str(ex)}
+
+
     def default_component_templates(self):
         component_templates = {}
         for template_file in glob.glob(self.root_directory + "/component_templates/*.json"):
