@@ -11,6 +11,8 @@ import shutil
 
 from typing import Union
 
+from digital_thought_commons import secrets_store
+
 Base = declarative_base()
 
 
@@ -242,6 +244,8 @@ class Configuration(dict):
             value = self.__getitem__(key)
             if isinstance(value, str) and str(value).startswith('ENV/'):
                 return os.getenv(str(value).replace('ENV/', '').strip(), value)
+            if isinstance(value, str) and str(value).startswith('SEC/'):
+                return secrets_store.get_secret_store().get_secret(str(value).replace('SEC/', '').strip())
             if not value:
                 return default
             return value
