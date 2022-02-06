@@ -7,12 +7,12 @@ from typing import Any
 class Digest(dict):
 
     __values_only__ = False
+    MAPPINGS = ['name', 'sha512', 'sha256', 'sha1', 'md5']
 
     def __init__(self) -> None:
         super().__init__()
 
-        self.mappings = {
-            'name': {},
+        self.calcs = {
             'sha512': {
                 'hashlib': hashlib.sha512()
             },
@@ -27,7 +27,7 @@ class Digest(dict):
             }
         }
 
-        for key in self.mappings:
+        for key in self.MAPPINGS:
             self[key]: str = str()
 
     def update_from_string(self, string: str) -> 'Digest':
@@ -35,10 +35,10 @@ class Digest(dict):
 
     def update_from_bytes(self, data: bytes) -> 'Digest':
         if not self.__values_only__:
-            for key in self.mappings:
+            for key in self.MAPPINGS:
                 if key != 'name':
-                    self.mappings[key]['hashlib'].update(data)
-                    self[key] = self.mappings[key]['hashlib'].hexdigest()
+                    self.calcs[key]['hashlib'].update(data)
+                    self[key] = self.calcs[key]['hashlib'].hexdigest()
             return self
         else:
             raise AttributeError('Digest values are read only and can not be updated')
@@ -66,14 +66,14 @@ class Digest(dict):
         try:
             if key.startswith('get_'):
                 return functools.partial(self.__getter__, key)
-            if key in self.mappings:
+            if key in self.MAPPINGS:
                 return super().__getitem__(key)
             raise AttributeError("object has no attribute '%s'" % key)
         except KeyError:
             raise AttributeError("object has no attribute '%s'" % key)
 
     def __setitem__(self, key, value):
-        if key in self.mappings:
+        if key in self.MAPPINGS:
             super().__setitem__(key, value)
         else:
             raise AttributeError("attribute '%s' is not supported" % key)
