@@ -33,3 +33,4 @@ simplejson
 pykeepass
 art
 flask
+svglib

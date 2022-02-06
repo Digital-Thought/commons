@@ -9,7 +9,9 @@ from urllib.parse import urljoin
 from digital_thought_commons import base64
 
 from digital_thought_commons.internet import requester
-
+from svglib.svglib import svg2rlg
+from reportlab.graphics import renderPDF, renderPM
+import io
 
 class IncompleteDownload(Exception):
     pass
@@ -100,8 +102,17 @@ def get_images_as_base64_strings(base_url, requester, *html_strings) -> List[dic
                     ref = urljoin(base_url, ref)
                     response = requester.get(ref)
                     if response.status_code in [200, 201] and response.headers['Content-Type'].startswith('image'):
-                        images.append({'base64': base64.to_base64_string(response.content),
-                                       'type': response.headers['Content-Type']})
+                        if "svg" in response.headers['Content-Type']:
+                            out_buf = io.BytesIO()
+                            drawing = svg2rlg(io.StringIO(response.text))
+                            renderPM.drawToFile(drawing, out_buf, fmt="PNG")
+                            base64_val = base64.to_base64_string(out_buf.getvalue())
+                            images.append({'base64': base64_val,
+                                           'type': 'image/png'})
+                            out_buf.close()
+                        else:
+                            images.append({'base64': base64.to_base64_string(response.content),
+                                           'type': response.headers['Content-Type']})
                 else:
                     images.append({'base64': ref.split(',')[1], 'type': ref.split(':')[1].split(';')[0]})
 
