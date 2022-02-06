@@ -28,7 +28,8 @@ class Digest(dict):
         }
 
         for key in self.MAPPINGS:
-            self[key]: str = str()
+            if key != 'calcs':
+                self[key]: str = str()
 
     def update_from_string(self, string: str) -> 'Digest':
         return self.update_from_bytes(string.encode(encoding='utf-8'))
