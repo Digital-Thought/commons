@@ -7,7 +7,7 @@ from typing import Any
 class Digest(dict):
 
     __values_only__ = False
-    MAPPINGS = ['name', 'sha512', 'sha256', 'sha1', 'md5']
+    MAPPINGS = ['calcs', 'name', 'sha512', 'sha256', 'sha1', 'md5']
 
     def __init__(self) -> None:
         super().__init__()
