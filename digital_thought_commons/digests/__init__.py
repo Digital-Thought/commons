@@ -36,7 +36,7 @@ class Digest(dict):
     def update_from_bytes(self, data: bytes) -> 'Digest':
         if not self.__values_only__:
             for key in self.MAPPINGS:
-                if key != 'name' and key != ['calcs']:
+                if key != 'name' and key != 'calcs':
                     self.calcs[key]['hashlib'].update(data)
                     self[key] = self.calcs[key]['hashlib'].hexdigest()
             return self
