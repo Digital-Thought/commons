@@ -40,6 +40,11 @@ loggers:
     handlers: [ logfile_ALL,logfile_ERR ]
     propagate: no
 
+  elasticsearch:
+    level: INFO
+    handlers: [ logfile_ELASTIC ]
+    propagate: no
+
   elastic:
     level: INFO
     handlers: [ logfile_ELASTIC ]
